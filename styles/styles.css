@@ -233,6 +233,10 @@ main .section.highlight {
 }
 
 @media (min-width: 900px) {
+  .structured-content h2 {
+    scroll-margin-top: 64px;
+  }
+  
   .structured-content main {
     margin-left: 280px;
   }  
