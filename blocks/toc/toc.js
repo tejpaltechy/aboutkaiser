@@ -46,9 +46,22 @@ export default function decorate(block) {
     });
   };
 
+  let ignoreIntersection = false;
+
+  window.addEventListener('hashchange', () => {
+    setSelected(window.location.hash.substring(1));
+    ignoreIntersection = true;
+  });
+
   const highlightObs = new IntersectionObserver((entries) => {
+    if (ignoreIntersection === true) {
+      ignoreIntersection = false;
+      return;
+    }
+    let selected = false;
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (!selected && entry.intersectionRatio > 0) {
+        selected = true;
         const { id } = entry.target.querySelector('h2');
         setSelected(id);
       }
