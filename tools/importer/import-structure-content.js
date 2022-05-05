@@ -25,14 +25,16 @@ function createMetadata(main, document) {
     meta.Description = desc.content;
   }
 
-  const tags = document.querySelector('[property="article:tag"]');
-  if (tags) {
-    meta.Tags = tags.content;
+  const image = document.querySelector('[property="og:image"]');
+  if (image && image.content) {
+    const img = document.createElement('img');
+    img.src = image.content;
+    meta.Image = img;
   }
 
-  const image = document.querySelector('[property="og:image"]');
-  if (image) {
-    meta.Image = image.content;
+  const tags = document.querySelector('[property="article:tag"]');
+  if (tags && tags.content) {
+    meta.Tags = tags.content.split(',').map((tag) => tag.trim()).join(', ');
   }
 
   const block = WebImporter.Blocks.getMetadataBlock(document, meta);
