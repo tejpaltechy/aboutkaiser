@@ -12,21 +12,21 @@
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #006ba6;
+  --link-hover-color: #003b71;
   --background-color: #fff;
   --overlay-background-color: #00000020;
   --highlight-background-color: #00000040;
-  --text-color: #000;
+  --text-color: #0d1c3d;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: 'Gotham', Verdana, sans-serif;
   --heading-font-family: var(var(--body-font-family));
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 15px;
 
   /* heading sizes */
   --heading-font-size-xxl: 48px;
@@ -38,7 +38,7 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
       --link-color: #15beec;
       --link-hover-color: #05aedc;
@@ -47,7 +47,7 @@
       --highlight-background-color: #ffffff40;
       --text-color: #fff;
   }
-}
+} */
 
 html {
   text-rendering: optimizelegibility;
@@ -58,7 +58,7 @@ body {
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
-  line-height: 1.6;
+  line-height: 1.33;
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
@@ -78,7 +78,7 @@ main {
 
 h1, h2, h3,
 h4, h5, h6 {
-  font-weight: 600;
+  font-weight: 100;
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
@@ -102,7 +102,6 @@ a:any-link {
 }
 
 a:hover {
-  text-decoration: underline;
   color: var(--link-hover-color);
 }
 
