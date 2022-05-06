@@ -15,8 +15,8 @@
   --link-color: #006ba6;
   --link-hover-color: #003b71;
   --background-color: #fff;
-  --border-color: #E7EBEE;
-  --overlay-background-color: #00000020;
+  --border-color: #D4D6DC;
+  --overlay-background-color: #E9EBEE;
   --highlight-background-color: #F8FAFC;
   --text-color: #0d1c3d;
 
@@ -252,4 +252,28 @@ main .section.highlight {
   .structured-content main {
     margin-left: 280px;
   }  
+}
+
+/* icons */
+.icon.icon-external-site {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  height: 10px;
+  width: 10px;
+  border-top: 1px solid var(--link-color);
+  border-right: 1px solid var(--link-color);
+}
+
+.icon.icon-external-site::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  right: -2.5px;
+  box-sizing: border-box;
+  width: 14px;
+  height: 1px;
+  background: var(--link-color);
+  transform: rotate(-45deg);
 }
