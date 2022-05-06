@@ -17,7 +17,7 @@ function createMetadata(main, document) {
 
   const title = document.querySelector('title');
   if (title) {
-    meta.Title = title.innerHTML.replace(/[\n\t]/gm, '');
+    meta.Title = title.innerHTML.replace(/[\n\t]/gm, '').replace('My Doctor Online', 'Kaiser Permanente').trim();
   }
 
   const desc = document.querySelector('[property="description"]');
@@ -79,6 +79,25 @@ function createImagePreviewBlock(main, document) {
   });
 }
 
+function getFilteredPath(url) {
+  return new URL(url).pathname
+    .replace(/\.xml$/, '')
+    .replace(/\.html$/, '')
+    .replace(/_-_/gm, '-')
+    .replace(/_/gm, '-')
+    .replace('/ncal/structured-content/', '/northern-california/health-wellness/structured-content/')
+    .toLowerCase();
+}
+
+function rewriteLinks(main) {
+  main.querySelectorAll('a').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (href && href.includes('/ncal/structured-content/')) {
+      link.setAttribute('href', `https://main--healthy-kp--hlxsites.hlx.page${getFilteredPath(href)}`);
+    }
+  });
+}
+
 export default {
 
   /**
@@ -100,6 +119,7 @@ export default {
 
     createImagePreviewBlock(main, document);
     createMetadata(main, document);
+    rewriteLinks(main);
 
     return main;
   },
@@ -111,10 +131,5 @@ export default {
    * @param {HTMLDocument} document The document
    */
   // eslint-disable-next-line no-unused-vars
-  generateDocumentPath: ({ document, url }) => new URL(url).pathname
-    .replace(/\.xml$/, '')
-    .replace(/\.html$/, '')
-    .replace(/_-_/gm, '-')
-    .replace(/_/gm, '-')
-    .toLowerCase(),
+  generateDocumentPath: ({ document, url }) => getFilteredPath(url),
 };

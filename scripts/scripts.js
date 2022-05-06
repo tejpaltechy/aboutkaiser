@@ -599,14 +599,11 @@ document.addEventListener('click', () => sampleRUM('click'));
 
 loadPage(document);
 
-function buildHeroBlock(main) {
+function buildTOC(main) {
   const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
-    main.prepend(section);
+  if (h1) {
+    const section = h1.closest('div');
+    section.insertBefore(buildBlock('toc', [[]]), h1.nextElementSibling);
   }
 }
 
@@ -634,7 +631,9 @@ function loadFooter(footer) {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    if (getMetadata('template') === 'structured-content') {
+      buildTOC(main);
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

@@ -21,7 +21,7 @@
   --text-color: #0d1c3d;
 
   /* fonts */
-  --body-font-family: 'Gotham', Verdana, sans-serif;
+  --body-font-family: 'Gotham', 'Verdana', sans-serif;
   --heading-font-family: var(var(--body-font-family));
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -90,6 +90,7 @@ main {
 
 h1, h2, h3,
 h4, h5, h6 {
+  scroll-margin-top: 64px;
   font-weight: 100;
   line-height: 1.25;
   margin-top: 1em;
@@ -237,4 +238,18 @@ main .section[data-section-status='initialized'] {
 
 main .section.highlight {
   background-color: var(--highlight-background-color);
+}
+
+.structured-content h2 {
+  scroll-margin-top: 128px;
+}
+
+@media (min-width: 900px) {
+  .structured-content h2 {
+    scroll-margin-top: 64px;
+  }
+  
+  .structured-content main {
+    margin-left: 280px;
+  }  
 }
