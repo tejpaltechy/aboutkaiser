@@ -611,14 +611,18 @@ function buildHeroBlock(main) {
 }
 
 function loadHeader(header) {
-  const headerBlock = buildBlock('header', '');
+  const headerBlock = buildBlock('header', [
+    ['<div>Nav</div>', '<div>/northern-california/nav</div>'],
+  ]);
   header.append(headerBlock);
   decorateBlock(headerBlock);
   loadBlock(headerBlock);
 }
 
 function loadFooter(footer) {
-  const footerBlock = buildBlock('footer', '');
+  const footerBlock = buildBlock('footer', [
+    ['<div>Footer</div>', '<div>/northern-california/footer</div>'],
+  ]);
   footer.append(footerBlock);
   decorateBlock(footerBlock);
   loadBlock(footerBlock);

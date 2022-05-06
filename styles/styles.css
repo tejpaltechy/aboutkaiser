@@ -15,8 +15,9 @@
   --link-color: #006ba6;
   --link-hover-color: #003b71;
   --background-color: #fff;
+  --border-color: #E7EBEE;
   --overlay-background-color: #00000020;
-  --highlight-background-color: #00000040;
+  --highlight-background-color: #F8FAFC;
   --text-color: #0d1c3d;
 
   /* fonts */
@@ -26,7 +27,7 @@
 
   /* body sizes */
   --body-font-size-m: 16px;
-  --body-font-size-s: 15px;
+  --body-font-size-s: 13px;
 
   /* heading sizes */
   --heading-font-size-xxl: 48px;
@@ -35,6 +36,7 @@
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
+  --heading-font-size-xxs: 15px;
 
 }
 
@@ -69,11 +71,21 @@ body.appear {
 }
 
 header {
-  height: 64px;
+  height: 126px;
 }
 
 main {
-  min-height: calc(100vh - 156px);
+  min-height: calc(100vh - 126px);
+}
+
+@media (min-width: 900px) {
+  header {
+    height: 172px;
+  }
+
+  main {
+    min-height: calc(100vh - 172px);
+  }
 }
 
 h1, h2, h3,
