@@ -1,6 +1,6 @@
 .toc-wrapper {
   position: sticky;
-  top: 64px;
+  top: 0;
   width: 100%;
   background-color: var(--background-color);
   padding: 16px 0;
@@ -32,10 +32,21 @@
 
 @media (min-width: 900px) {
   .toc-wrapper {
-    position: fixed;
-    top: 200px;
+    position: absolute;
+    top: 64px;
     left: 0;
+    bottom: 0;
+    background-color: unset;
+    margin: left;
     width: 280px;
+  }
+
+  .toc {
+    background-color: var(--background-color);
+    position: sticky;
+    top: 64px;
+    margin-top: 64px;
+    margin-bottom: 64px;
   }
 
   .toc aside {

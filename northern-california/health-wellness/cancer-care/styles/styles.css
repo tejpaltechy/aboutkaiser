@@ -22,7 +22,7 @@
 
   /* fonts */
   --body-font-family: 'Gotham', 'Verdana', sans-serif;
-  --heading-font-family: var(var(--body-font-family));
+  --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
@@ -90,7 +90,6 @@ main {
 
 h1, h2, h3,
 h4, h5, h6 {
-  scroll-margin-top: 64px;
   font-weight: 100;
   line-height: 1.25;
   margin-top: 1em;
@@ -241,17 +240,21 @@ main .section.highlight {
 }
 
 .structured-content h2 {
-  scroll-margin-top: 128px;
+  scroll-margin-top: 64px;
 }
 
-@media (min-width: 900px) {
-  .structured-content h2 {
-    scroll-margin-top: 64px;
-  }
-  
-  .structured-content main {
+@media (min-width: 900px) {  
+  .structured-content .default-content-wrapper {
     margin-left: 280px;
   }  
+
+  .structured-content main {
+    position: relative;
+  }
+
+  .structured-content h2 {
+    scroll-margin-top: 16px;
+  }
 }
 
 /* icons */
