@@ -163,8 +163,9 @@ main input:hover {
 }
 
 main .section {
-  padding: 32px 64px;
+  padding: 32px;
 }
+
 
 main pre {
   background-color: var(--overlay-background-color);
@@ -255,6 +256,11 @@ main .section.highlight {
   .structured-content h2 {
     scroll-margin-top: 16px;
   }
+
+  main .section {
+    padding: 32px 64px;
+  }
+  
 }
 
 /* icons */

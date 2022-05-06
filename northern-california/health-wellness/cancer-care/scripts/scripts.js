@@ -652,6 +652,21 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateLinkedPictures(main) {
+  /* thanks to word online */
+  main.querySelectorAll('picture').forEach((picture) => {
+    const nextSib = picture.closest('p') ? picture.closest('p').nextElementSibling : picture.nextElementSibling;
+    if (nextSib) {
+      const a = nextSib.querySelector('a');
+      if (a && a.textContent.startsWith('https://')) {
+        a.innerHTML = '';
+        a.className = '';
+        a.appendChild(picture);
+      }
+    }
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -661,6 +676,8 @@ export function decorateMain(main) {
   decoratePictures(main);
   // forward compatible link rewriting
   makeLinksRelative(main);
+  // forward compatible link rewriting
+  decorateLinkedPictures(main);
 
   decorateIcons(main);
   buildAutoBlocks(main);
