@@ -667,6 +667,15 @@ function decorateLinkedPictures(main) {
   });
 }
 
+function decorateStructuredContentLinks(main) {
+  main.querySelectorAll('a[href^="https://mydoctor.kaiserpermanente.org/ncal/structured-content"').forEach((a) => {
+    const [lastSeg] = a.href.split('/').pop().split('.');
+    let href = toClassName(lastSeg);
+    while (href.includes('--')) href = href.replace('--', '-');
+    a.href = `/northern-california/health-wellness/structured-content/${href}`;
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -676,8 +685,9 @@ export function decorateMain(main) {
   decoratePictures(main);
   // forward compatible link rewriting
   makeLinksRelative(main);
-  // forward compatible link rewriting
+
   decorateLinkedPictures(main);
+  decorateStructuredContentLinks(main);
 
   decorateIcons(main);
   buildAutoBlocks(main);

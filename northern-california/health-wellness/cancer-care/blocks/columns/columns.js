@@ -1,4 +1,7 @@
 export default function decorate(block) {
+  const row = block.querySelector('div');
+  const names = ['zero', 'one', 'two', 'three', 'four', 'five'];
+  block.classList.add(`columns-${names[row.children.length]}`);
   block.querySelectorAll('a[href^="https://kp.qumucloud.com/"]').forEach((a) => {
     const videoURL = a.href;
     a.href = '#';

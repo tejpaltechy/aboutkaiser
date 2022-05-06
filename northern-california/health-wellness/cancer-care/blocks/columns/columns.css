@@ -1,3 +1,10 @@
+.columns > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .columns-video img {
     border-radius: 15px;
     aspect-ratio: 16 / 9;
@@ -84,17 +91,27 @@
     border-width: 50px 0 50px 80px;
 }
 
+.columns >  div > div {
+    max-width: 500px;
+}
+
 @media (min-width: 900px) {
-    .columns {
+    .columns-four {
         font-size: var(--body-font-size-s);
     }
     
-    .columns h2 {
+    .columns-four h2 {
         font-size: var(--heading-font-size-s);
     }
 
-    .columns >  div {
-        display: flex;
+    .columns > div {
+        flex-direction: unset;
+        align-items: unset;
+        justify-content: center;
+    }
+
+    .columns-two > div {
+        align-items: center;
     }
 
     .columns >  div > div {
