@@ -10,12 +10,16 @@ main .hero-container {
   
 main .hero {
     position: relative;
-    padding: 2rem;
+    padding: 32px 64px;
     min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: linear-gradient(#0000, #0008);
 }
 
 main .hero h1 {
-    max-width: 768px;
+    max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
     color: white;
