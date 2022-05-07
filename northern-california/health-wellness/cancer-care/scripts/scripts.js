@@ -652,6 +652,30 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateLinkedPictures(main) {
+  /* thanks to word online */
+  main.querySelectorAll('picture').forEach((picture) => {
+    const nextSib = picture.closest('p') ? picture.closest('p').nextElementSibling : picture.nextElementSibling;
+    if (nextSib) {
+      const a = nextSib.querySelector('a');
+      if (a && a.textContent.startsWith('https://')) {
+        a.innerHTML = '';
+        a.className = '';
+        a.appendChild(picture);
+      }
+    }
+  });
+}
+
+function decorateStructuredContentLinks(main) {
+  main.querySelectorAll('a[href^="https://mydoctor.kaiserpermanente.org/ncal/structured-content"').forEach((a) => {
+    const [lastSeg] = a.href.split('/').pop().split('.');
+    let href = toClassName(lastSeg);
+    while (href.includes('--')) href = href.replace('--', '-');
+    a.href = `/northern-california/health-wellness/structured-content/${href}`;
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -661,6 +685,9 @@ export function decorateMain(main) {
   decoratePictures(main);
   // forward compatible link rewriting
   makeLinksRelative(main);
+
+  decorateLinkedPictures(main);
+  decorateStructuredContentLinks(main);
 
   decorateIcons(main);
   buildAutoBlocks(main);
