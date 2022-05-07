@@ -236,6 +236,15 @@ main .section[data-section-status='initialized'] {
   display: none;
 }
 
+header .block {
+  display: none;
+}
+
+header .block[data-block-status='loaded'] {
+  display: unset;
+}
+
+
 main .section.highlight {
   background-color: var(--highlight-background-color);
 }
