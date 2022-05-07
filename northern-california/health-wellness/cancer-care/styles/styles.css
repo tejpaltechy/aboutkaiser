@@ -71,20 +71,20 @@ body.appear {
 }
 
 header {
-  height: 126px;
+  height: 72px;
 }
 
 main {
-  min-height: calc(100vh - 126px);
+  min-height: calc(100vh - 72px);
 }
 
 @media (min-width: 900px) {
   header {
-    height: 172px;
+    height: 144px;
   }
 
   main {
-    min-height: calc(100vh - 172px);
+    min-height: calc(100vh - 144px);
   }
 }
 
