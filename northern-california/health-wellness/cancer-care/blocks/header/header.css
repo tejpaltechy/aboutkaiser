@@ -628,6 +628,7 @@ header .nav-region .nav-region-options {
   margin-bottom: calc(72px * 2);
   background: var(--background-color);
   color: var(--text-color);
+  z-index: 1;
 }
 
 header .nav-region .nav-region-options li {

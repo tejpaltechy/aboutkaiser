@@ -104,6 +104,11 @@ footer .footer .icon.icon-globe::after {
   }
 }
 
+footer .footer .footer-links a {
+  color: var(--link-color);
+  cursor: pointer;
+}
+
 footer .footer .footer-links .footer-links-item-title {
   position: relative;
   padding: 32px 0;

@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons } from '../../scripts/scripts.js';
+import { readBlockConfig, decorateIcons, decorateLanguage } from '../../scripts/scripts.js';
 
 function closeMenu(el) {
   el.setAttribute('aria-expanded', false);
@@ -85,8 +85,13 @@ export default async function decorate(block) {
   footer.querySelectorAll(':scope > div').forEach((section, i) => {
     section.classList.add(`footer-${sections[i]}`);
   });
+
   const links = footer.querySelector('.footer-links');
   if (links) decorateLinks(links);
+
+  const language = footer.querySelector('a[href*="#language-picker"]')?.parentNode;
+  if (language) decorateLanguage(language);
+
   await decorateIcons(footer);
   block.append(footer);
 }

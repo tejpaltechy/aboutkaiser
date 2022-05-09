@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons, toClassName } from '../../scripts/scripts.js';
+import { readBlockConfig, decorateIcons, decorateLanguage } from '../../scripts/scripts.js';
 
 function closeMenu(el) {
   el.setAttribute('aria-expanded', false);
@@ -67,78 +67,6 @@ function decorateRegion(section) {
 
   section.prepend(btn);
   selected.parentNode.remove();
-}
-
-function closeLanguageModal() {
-  const modal = document.querySelector('.nav-language-modal');
-  if (modal) modal.remove();
-}
-
-function redirectToSpanishSite() {
-  const { protocol, pathname } = new URL(window.location.href);
-  window.open(`${protocol}//espanol.kaiserpermanente.org/es${pathname}`);
-}
-
-async function buildLanguageModal() {
-  const resp = await fetch('/northern-california/health-wellness/cancer-care/language-picker.plain.html');
-  const html = await resp.text();
-  // build modal
-  const modal = document.createElement('aside');
-  modal.classList.add('nav-language-modal');
-  modal.innerHTML = html;
-  // decorate checkbox
-  const checkbox = modal.querySelector('.checkbox');
-  const label = document.createElement('label');
-  const input = document.createElement('input');
-  input.setAttribute('type', 'checkbox');
-  const span = document.createElement('span');
-  span.classList.add('checkmark');
-  label.textContent = checkbox.textContent;
-  label.prepend(input, span);
-  checkbox.innerHTML = label.outerHTML;
-  checkbox.querySelector('input').addEventListener('change', (e) => {
-    if (e.target.checked) {
-      localStorage.setItem('kp-view-spanish', true);
-    } else {
-      localStorage.removeItem('kp-view-spanish');
-    }
-  });
-  // decorate buttons
-  const btns = modal.querySelectorAll('.button');
-  btns.forEach((btn) => {
-    const button = document.createElement('button');
-    button.textContent = btn.textContent;
-    button.classList.add('btn', 'btn-nav-language-modal');
-    button.id = toClassName(btn.textContent);
-    btn.innerHTML = button.outerHTML;
-  });
-  const cancelBtn = modal.querySelector('#cancelar');
-  if (cancelBtn) cancelBtn.addEventListener('click', closeLanguageModal);
-  const continueBtn = modal.querySelector('#continuar');
-  if (continueBtn) {
-    continueBtn.addEventListener('click', redirectToSpanishSite);
-  }
-  // decorate close btn
-  const close = document.createElement('div');
-  close.classList.add('nav-language-modal-close');
-  close.innerHTML = '<div class="nav-language-modal-close-icon"></div>';
-  close.addEventListener('click', closeLanguageModal);
-
-  modal.prepend(close);
-  document.querySelector('header .nav').append(modal);
-}
-
-function decorateLanguage(section) {
-  const btn = section.querySelector('a');
-  btn.removeAttribute('href');
-  btn.addEventListener('click', () => {
-    const showThis = localStorage.getItem('kp-view-spanish');
-    if (!showThis) {
-      buildLanguageModal();
-    } else {
-      redirectToSpanishSite();
-    }
-  });
 }
 
 function closeSearch() {
