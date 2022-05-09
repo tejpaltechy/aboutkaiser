@@ -224,13 +224,6 @@ header .nav[aria-expanded='true'] .nav-hamburger-icon::after {
 header .nav-brand {
   grid-area: brand;
   height: 40px;
-  /* font-size: 22px; */
-  /* font-weight: 700; */
-  /* line-height: 1em; */
-}
-
-header .nav-brand p {
-  /* margin: 0; */
 }
 
 header .nav-brand svg {
@@ -279,6 +272,7 @@ header .nav-search p {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    font-size: 16px;
   }
 
   header .nav-search p::after {
@@ -287,8 +281,8 @@ header .nav-search p {
   }
 }
 
-header .nav-search-form {
-  position: fixed;
+header .nav-search-menu {
+  position: absolute;
   top: 0;
   left: 0;
   width: calc(100% - (16px * 2));
@@ -297,48 +291,47 @@ header .nav-search-form {
   z-index: 3;
 }
 
-header .nav-search-form .nav-search-close {
+@media (min-width: 900px) {
+  header .nav-search-menu {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 72px;
+    padding: 11px 16px;
+  }
+}
+
+header .nav-search-menu .nav-search-close {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (min-width: 900px) {
+  header .nav-search-menu .nav-search-close {
+    align-items: center;
+    position: absolute;
+    right: 16px;
+    height: 50px;
+  }
+}
+
+header .nav-search-menu .nav-search-close-icon {
   cursor: pointer;
 }
 
-header .nav-search-form .nav-search-close-icon {
-  box-sizing: border-box;
-  display: block;
-  position: relative;
-  height: 22px;
-  width: 22px;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  transform: translate(-3px, -2px);
-}
-
-header .nav-search-form .nav-search-close-icon::after,
-header .nav-search-form .nav-search-close-icon::before {
-  content: "";
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  top: 8px;
-  left: 1px;
-  height: 2px;
-  width: 22px;
-  border-radius: 5px;
-  background: var(--background-color);
-  transform: rotate(45deg);
-}
-
-header .nav-search-form .nav-search-close-icon::after {
-  transform: rotate(-45deg)
-}
-
-header .nav-search-form .nav-search-input-wrapper {
+header .nav-search-menu .nav-search-input {
   position: relative;
   margin-top: 18px;
 }
 
-header .nav-search-form .nav-search-input {
+@media (min-width: 900px) {
+  header .nav-search-menu .nav-search-input {
+    margin-top: 0;
+    width: 480px;
+  }
+}
+
+header .nav-search-menu .nav-search-input input {
   height: 48px;
   width: calc(100% - (48px * 2));
   border: 0;
@@ -350,27 +343,121 @@ header .nav-search-form .nav-search-input {
   cursor: text;
 }
 
-header .nav-search-form .nav-search-input:focus {
+@media (min-width: 900px) {
+  header .nav-search-menu .nav-search-input input {
+    width: calc(100% - (16px * 2));
+    padding: 0 32px 0 16px;
+    border: 1px solid var(--border-color);
+    background: var(--background-color);
+    color: var(--text-color);
+  }
+}
+
+header .nav-search-menu .nav-search-input input:focus {
   outline: 0;
 }
 
-header .nav-search-form .icon.icon-close {
+header .nav-search-menu .nav-search-input .icon.icon-clear {
   visibility: hidden;
+  box-sizing: border-box;
+  display: block;
   position: absolute;
   top: 50%;
-  right: 18px;
+  right: 0;
+  height: 22px;
+  width: 22px;
+  border: 2px solid var(--background-color);
+  border-radius: 40px;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
-header .nav-search-form .icon.icon-close.show {
+header .nav-search-menu .nav-search-input .icon.icon-clear::after,
+header .nav-search-menu .nav-search-input .icon.icon-clear::before {
+  content: "";
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 3px;
+  height: 2px;
+  width: 12px;
+  background: var(--background-color);
+  border-radius: 5px;
+  transform: rotate(45deg);
+}
+
+header .nav-search-menu .nav-search-input .icon.icon-clear::after {
+  transform: rotate(-45deg)
+}
+
+header .nav-search-menu .nav-search-input .icon.icon-clear.show {
   visibility: unset;
 }
 
-header .nav-search-form svg {
+@media (min-width: 900px) {
+  header .nav-search-menu .nav-search-input .icon.icon-clear.show {
+    border-color: var(--link-color);
+  }
+
+  header .nav-search-menu .nav-search-input .icon.icon-clear.show::before,
+  header .nav-search-menu .nav-search-input .icon.icon-clear.show::after {
+    background: var(--link-color);
+  }
+}
+
+header .nav-search-menu .nav-search-input .icon.icon-search {
   position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 900px) {
+  header .nav-search-menu .nav-search-input .icon.icon-search {
+    visibility: hidden;
+  }
+}
+
+header .nav-search-menu .nav-search-input .icon.icon-search svg {
   height: 32px;
   width: 32px;
-  margin-top: 8px;
+  fill: var(--background-color);
+}
+
+header .nav-search-menu button {
+  display: none;
+  visibility: hidden;
+  margin-left: 18px;
+  border: 0;
+  padding: 0 32px;
+  background: var(--link-hover-color);
+  color: var(--background-color);
+  font-size: 16px;
+}
+
+@media (min-width: 900px) {
+  header .nav-search-menu button {
+    display: flex;
+    align-items: center;
+    visibility: unset;
+  }
+}
+
+header .nav-search-menu button:focus,
+header .nav-search-menu button:hover {
+  background: var(--text-color);
+}
+
+
+header .nav-search-menu button .icon.icon-search {
+  margin-top: 2px;
+  margin-right: 8px;
+}
+
+header .nav-search-menu button .icon.icon-search svg {
+  height: 18px;
+  width: 18px;
   fill: var(--background-color);
 }
 
@@ -383,10 +470,11 @@ header .nav-links {
   header .nav-links li {
     display: inline-block;
     margin: 32px 0;
+    font-size: 16px;
   }
 
   header .nav-links li:not(:last-of-type) {
-    margin-right: 18px;
+    margin-right: 20px;
   }
 
   header .nav-links a {
@@ -625,10 +713,9 @@ header .nav-region .nav-region-btn[aria-expanded=false] + .nav-region-options {
 }
 
 header .nav-region .nav-region-options {
-  margin-bottom: calc(72px * 2);
   background: var(--background-color);
   color: var(--text-color);
-  z-index: 1;
+  z-index: 4;
 }
 
 header .nav-region .nav-region-options li {
@@ -678,7 +765,7 @@ header .nav-sections {
   grid-area: sections;
   /* flex-direction: column; */
   display: none;
-  height: 100vh;
+  height: calc(100vh - (64px * 2));
   width: calc(100vw - (64px * 2));
   padding: 64px;
   padding-top: 72px;
