@@ -5,6 +5,25 @@ import { sampleRUM } from './scripts.js';
 sampleRUM('cwv');
 
 // add more delayed functionality here
+function updateExternalLinks() {
+  document.querySelectorAll('main a[href]').forEach((a) => {
+    try {
+      const { origin } = new URL(a.href, window.location.href);
+      if (origin && origin !== window.location.origin) {
+        a.setAttribute('rel', 'noopener');
+        a.setAttribute('target', '_blank');
+        if (!a.children.length) {
+          a.innerHTML += ' <span class="icon icon-external-site"></span>';
+        }
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.warn(`Invalid link: ${a.href}`);
+    }
+  });
+}
+
+updateExternalLinks();
 
 function loadScript(url, callback, type) {
   const $head = document.querySelector('head');
