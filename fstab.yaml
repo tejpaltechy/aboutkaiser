@@ -1,2 +1,4 @@
 mountpoints:
-  /: https://sp-cloud.kp.org/sites/KPD-Helix/Shared%20Documents/website
+  /:
+    url: https://sp-cloud.kp.org/sites/KPD-Helix/Shared%20Documents/website
+    type: onedrive
