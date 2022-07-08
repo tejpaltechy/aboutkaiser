@@ -1,0 +1,23 @@
+.article-header-container {
+    background-color: var(--overlay-background-color);
+}
+
+div.article-header-wrapper {
+    max-width: 1200px;
+}
+
+.article-header h1 {
+    font-size: var(--heading-font-size-xl);
+}
+
+
+@media (min-width: 900px) {
+    .article-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .article-header > div {
+        flex: 1;
+    }
+}

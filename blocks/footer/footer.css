@@ -1,0 +1,115 @@
+footer {
+  margin-top: 32px;
+  background-color: #0E2A4F;
+  font-size: var(--body-font-size-s);
+  font-weight: var(--body-font-weight-m);
+  line-height: 2.14;
+  color: white;
+}
+
+footer a:any-link, footer h3 {
+  color: white;
+}
+
+footer h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+footer .footer {
+  margin: auto;
+}
+
+footer .footer p {
+  margin: 0;
+}
+
+footer .footer > div > div {
+  padding: 32px;
+} 
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+
+footer .footer-first, footer .footer-language {
+  background-color:  #01172e;
+}
+
+footer .footer .footer-language {
+  padding-bottom: 0;
+}
+
+footer .footer-language > p {
+  border-bottom: 0.5px solid rgb(255 255 255 / 30%);
+  padding-bottom: 32px;
+}
+
+footer .footer-second {
+  background-color:  #010e1a;
+}
+
+footer .footer-wrapper {
+  margin: 0;
+}
+
+footer .footer-app {
+  width: 340px;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+}
+
+footer .footer-app > picture {
+  margin-right: 15px;
+}
+
+footer .footer-app > a {
+  font-size: var(--heading-font-size-m);
+}
+
+footer sup.glyph-external-link {
+  vertical-align: baseline;
+  font-size: 0;
+}
+
+footer sup.glyph-external-link::before {
+  display: inline;
+  font-family: wj-glyphs, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  content: "\e918";
+  margin: 0 4px; 
+}
+
+footer .footer .footer-copyright {
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+@media (min-width: 900px) {
+  footer .footer-second > div,
+  footer .footer-second > p {
+    margin: 0 15px;
+  }
+
+  footer .footer > div > div {
+    padding: 32px calc((100% - 800px) / 2);
+  } 
+  
+  footer .footer-first {
+    display: grid;
+    grid-template-areas: 'booking before airport air' 'booking before airport destination';
+  }
+  
+  footer .footer-second {
+    display: grid;
+    grid-template-areas: 'app about services' 'app about legal' 'app vacations legal' 'copyright copyright copyright';
+  }  
+
+}

@@ -1,0 +1,144 @@
+main > .section.tiles-container {
+  padding: 16px;
+}
+
+.tiles {
+  font-size: var(--body-font-size-xs);
+}
+
+.tiles > div {
+  position: relative;
+  padding-top: 100%;
+  color: var(--background-color);
+}
+
+.tiles a:any-link {
+  color: var(--background-color);
+}
+
+.tiles > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 15px;
+  padding: 30px;
+}
+
+.tiles picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.tiles picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tiles h2 {
+  font-size: var(--heading-font-size-m);
+}
+
+.tiles h3 {
+  font-size: var(--heading-font-size-l);
+}
+
+.tiles p.button-container {
+  margin: 0;
+}
+
+.tiles a.button {
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .tiles {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+
+@media (min-width: 900px) {
+  .tiles {
+    display: grid;
+    grid-template-areas: 'b1 b1' 'b2 b3' 'b4 b5';
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tiles h3 {
+    font-size: var(--heading-font-size-m);
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .tiles {
+    grid-template-areas: 'b2 b1 b1 b3' 'b4 b1 b1 b5';
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .tiles h3 {
+    font-size: var(--heading-font-size-s);
+  }
+}
+
+.tiles > div:nth-child(1) {
+  grid-area: b1;
+}
+
+.tiles > div:nth-child(2) {
+  grid-area: b2;
+}
+
+.tiles > div:nth-child(3) {
+  grid-area: b3;
+}
+
+.tiles > div:nth-child(4) {
+  grid-area: b4;
+}
+
+.tiles > div:nth-child(5) {
+  grid-area: b5;
+}
+
+.tiles > div:nth-child(1) > div {
+  background-color: #003b71;
+}
+
+.tiles > div:nth-child(2) > div {
+  background-color: #4a7628;
+}
+
+.tiles > div:nth-child(3) > div {
+  background-color: #bb1654;
+}
+
+.tiles > div:nth-child(4) > div {
+  background-color: #066564;
+}
+
+.tiles > div:nth-child(5) > div {
+  background-color: #583985;
+}
+
+.tiles > div > div.tiles-overlay {
+  background-color: transparent;
+  background-image: linear-gradient(#0000, #0008);
+
+  --link-color: var(--background-color);
+  --link-hover-color: var(--background-color);
+}
+
+.tiles .tiles-overlay .button:hover {
+  color: var(--text-color);
+}
