@@ -1,0 +1,51 @@
+main .article-feed .article-feed-results {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  justify-content: center;
+  text-align: center;
+
+}
+
+main .article-feed-card {
+  box-sizing: border-box;
+  text-align: left;
+  margin: 8px;
+}
+
+main .article-feed-card p {
+  font-size: var(--body-font-size-xs);
+}
+
+main .article-feed-card h4 {
+  font-size: var(--heading-font-size-xs);
+}
+
+main .article-feed-filters {
+  display: flex;
+  font-weight: 600;
+  font-size: var(--body-font-size-s)
+}
+
+main .article-feed-filters > div {
+  margin: 16px;
+}
+
+@media (min-width: 600px) {
+  main .article-feed-card {
+    width: calc(50% - 16px);
+  }
+}
+
+@media (min-width: 900px) {
+  main .article-feed-card {
+    width: calc(33% - 16px);
+  }  
+}
+
+@media (min-width: 1200px) {
+  main .article-feed-card {
+    width: min(calc(25% - 16px), 309px);
+  }  
+}

@@ -1,8 +1,0 @@
-.list > div {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.list > div > div {
-    flex: 1 1 400px;
-}
